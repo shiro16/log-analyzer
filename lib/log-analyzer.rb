@@ -1,4 +1,4 @@
-require "log/analyzer/version"
+require "log-analyzer/version"
 
 module Log
   module Analyzer
