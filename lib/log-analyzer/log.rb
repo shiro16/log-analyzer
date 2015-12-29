@@ -6,7 +6,7 @@ module Log::Analyze
 
     def each_line(&block)
       @file.each_line do |line|
-        md = line.match(/Started (?<request_method>GET|POST|DELETE|PATCH|PUT) "(?<path_info>[^"]+)"/)
+        next unless md = line.match(/Started (?<request_method>GET|POST|DELETE|PATCH|PUT) "(?<path_info>[^"]+)"/)
         env = md.names.inject({}) do |hash, name|
                 hash[name.upcase] = md[name]
                 hash
