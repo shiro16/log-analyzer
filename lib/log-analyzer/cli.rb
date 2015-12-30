@@ -12,20 +12,22 @@ module Log::Analyzer
     class Report
       include CommandLineReporter
 
-      def initialize(hash)
-        @hash = hash
+      def initialize(endpoints)
+        @endpoints = endpoints
       end
 
       def run
         table(width: :auto, border: true) do
           row header: true, color: 'red' do
+            column('method')
             column('endpoint')
             column('count')
           end
-          @hash.each do |key, value|
+          @endpoints.each do |endpoint|
             row color: 'red' do
-              column(key)
-              column(value)
+              column(endpoint.method)
+              column(endpoint.uri_pattern)
+              column(endpoint.count)
             end
           end
         end

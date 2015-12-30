@@ -1,9 +1,9 @@
 module Log::Analyzer
   class Analyze
     def initialize(files, routes_text)
-      files = [files] unless files.is_a?(Array)
-      @files = files
+      @files =files.is_a?(Array) ? files : [files]
       @routes = Log::Analyzer::Routes.new(routes_text)
+      create_endpoints
     end
 
     def result
@@ -11,7 +11,7 @@ module Log::Analyzer
     end
 
     def sort
-      result.sort_by{ |key, val| -val }.to_h
+      result.sort{ |a, b| b.count <=> a.count }
     end
 
     private
@@ -20,24 +20,22 @@ module Log::Analyzer
     end
 
     def matche
-      @files.inject(format) do |result, file|
+      @files.each do |file|
         log = Log::Analyze::Log.new(file)
         log.each_line do |req|
           matche = router.serve(req)
           next unless matche.any?
 
           _, _, route =  matche.first
-          result[route.path.uri_pattern] += 1
+          endpoint = Endpoint.find_by(method: route.path.request_method, uri_pattern: route.path.uri_pattern)
+          endpoint.count += 1
         end
-        result
       end
+      Endpoint.all
     end
 
-    def format
-      @routes.inject(Hash.new(0)) do |hash, route|
-        hash[route.path.uri_pattern] = 0
-        hash
-      end
+    def create_endpoints
+      @routes.each { |route| Endpoint.create(method: route.path.request_method, uri_pattern: route.path.uri_pattern) }
     end
   end
 end
