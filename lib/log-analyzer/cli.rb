@@ -4,7 +4,7 @@ module Log::Analyzer
   class CLI
     def self.run(files, options)
       routing_text = File.read(options[:r])
-      analyze = Log::Analyzer::Analyze.new(files, routing_text)
+      analyze = Analyze.new(files, routing_text)
       Report.new(analyze.sort).run
     end
 

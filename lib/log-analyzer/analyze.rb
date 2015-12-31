@@ -2,7 +2,7 @@ module Log::Analyzer
   class Analyze
     def initialize(files, routes_text)
       @files =files.is_a?(Array) ? files : [files]
-      @routes = Log::Analyzer::Routes.new(routes_text)
+      @routes = Routes.new(routes_text)
       create_endpoints
     end
 
@@ -16,12 +16,12 @@ module Log::Analyzer
 
     private
     def router
-      @router ||= Log::Analyzer::Router.new(@routes)
+      @router ||= Router.new(@routes)
     end
 
     def matche
       @files.each do |file|
-        log = Log::Analyze::Log.new(file)
+        log = Log.new(file)
         log.each_line do |req|
           matche = router.serve(req)
           next unless matche.any?

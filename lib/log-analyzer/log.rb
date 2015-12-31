@@ -1,4 +1,4 @@
-module Log::Analyze
+module Log::Analyzer
   class Log
     def initialize(path)
       @file = File.open(path)
