@@ -5,8 +5,7 @@ module Log::Analyzer
     def self.run(files, options)
       routing_text = File.read(options[:r])
       analyze = Log::Analyzer::Analyze.new(files, routing_text)
-      result = analyze.sort
-      Report.new(result).run
+      Report.new(analyze.sort).run
     end
 
     class Report
