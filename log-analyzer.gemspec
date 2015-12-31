@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["shiro16"]
   spec.email         = ["nyanyanyawan24@gmail.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
-  spec.homepage      = ""
+  spec.summary       = %q{Analyze the performance of each endpoint from the routing file}
+  spec.description   = %q{Analyze the performance of each endpoint from the routing file}
+  spec.homepage      = "https://github.com/shiro16/log-analyzer"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
