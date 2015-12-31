@@ -3,7 +3,7 @@ require 'action_dispatch'
 
 module Log::Analyzer
   class Routes < ActionDispatch::Journey::Routes
-    ROUTE_REGEXP = /(GET|POST|DELETE|PATCH|PUT)\s+([^\s]*)\s/
+    ROUTE_REGEXP = /(GET|POST|DELETE|PATCH|PUT)\s+([^\s]*)\s/i
 
     def initialize(routes_text)
       super()

@@ -1,6 +1,6 @@
 module Log::Analyzer
   class Log
-    LOG_REGEXP = /Started (?<request_method>GET|POST|DELETE|PATCH|PUT) "(?<path_info>[^"]+)"/
+    LOG_REGEXP = /Started (?<request_method>GET|POST|DELETE|PATCH|PUT) "(?<path_info>[^"]+)"/i
 
     def initialize(path)
       @file = File.open(path)
