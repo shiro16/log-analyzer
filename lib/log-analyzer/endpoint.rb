@@ -18,7 +18,7 @@ module Log::Analyzer
     end
 
     def self.all
-      @endpoints.values
+      self.endpoints.values
     end
 
     def self.endpoints

@@ -3,7 +3,7 @@ require 'command_line_reporter'
 module Log::Analyzer
   class CLI
     def self.run(files, options)
-      routing_text = File.read(options[:r])
+      routing_text = File.read(options[:routing_file])
       analyze = Analyze.new(files, routing_text)
       Report.new(analyze.sort).run
     end
