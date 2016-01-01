@@ -1,5 +1,7 @@
 # Log::Analyzer
 
+[![Build Status](https://travis-ci.org/shiro16/log-analyzer.svg)](https://travis-ci.org/shiro16/log-analyzer)
+
 Analyze the performance of each endpoint from the routing file
 
 ## Installation
