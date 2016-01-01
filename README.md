@@ -30,6 +30,31 @@ Other Framework Application:
 
     $ log-analyzer -r routing_file <file ...>
 
+## CLI Reference
+
+Help:
+
+```shell
+$ log-analyzer --help
+Usage: log-analyzer [options] <file ...>
+    -h, --help                       output usage information
+    -V, --version                    output the version number
+    -r FILE                          routing format file
+    -R, --route-regexp VALUE         route regexp
+    -L, --log-regexp VALUE           log regexp
+```
+
+Example:
+
+```shell
+$ log-analyzer -r path/to/routes.txt path/to/application.log
+┏━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┓
+┃ method ┃ endpoint ┃ count ┃
+┣━━━━━━━━╊━━━━━━━━━━╊━━━━━━━┫
+┃ GET    ┃ /        ┃ 1     ┃
+┗━━━━━━━━┻━━━━━━━━━━┻━━━━━━━┛
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
