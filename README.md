@@ -48,11 +48,15 @@ Example:
 
 ```shell
 $ log-analyzer -r path/to/routes.txt path/to/application.log
-┏━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┓
-┃ method ┃ endpoint ┃ count ┃
-┣━━━━━━━━╊━━━━━━━━━━╊━━━━━━━┫
-┃ GET    ┃ /        ┃ 1     ┃
-┗━━━━━━━━┻━━━━━━━━━━┻━━━━━━━┛
+┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━┓
+┃ method ┃ endpoint   ┃ count ┃
+┣━━━━━━━━╊━━━━━━━━━━━━╊━━━━━━━┫
+┃ GET    ┃ /          ┃ 10    ┃
+┃ GET    ┃ /users     ┃ 5     ┃
+┃ GET    ┃ /users/:id ┃ 3     ┃
+┃ POST   ┃ /users     ┃ 2     ┃
+┃ DELETE ┃ /users/:id ┃ 0     ┃
+┗━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━┛
 ```
 
 ## Development
