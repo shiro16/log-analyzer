@@ -21,12 +21,22 @@ module Log::Analyzer
             column('method')
             column('endpoint')
             column('count')
+            @endpoints.first.values.keys.each do |key|
+              column("#{key}(avg)")
+              column("#{key}(max)")
+              column("#{key}(min)")
+            end
           end
           @endpoints.each do |endpoint|
             row color: 'red' do
               column(endpoint.method)
               column(endpoint.uri_pattern)
               column(endpoint.count)
+              endpoint.values.each do |_, val|
+                column(val.inject(0.0, :+).quo(val.count).round(2))
+                column(val.max)
+                column(val.min)
+              end
             end
           end
         end

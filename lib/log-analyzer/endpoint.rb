@@ -2,11 +2,15 @@ module Log::Analyzer
   class Endpoint
     attr_accessor :method, :uri_pattern, :count, :values
 
-    def initialize(method: "", uri_pattern: "", values: Hash.new(0))
+    def initialize(method: "", uri_pattern: "")
       @method      = method
       @uri_pattern = uri_pattern
       @count       = 0
-      @values      = values
+      @values      = {}
+    end
+
+    def [](key)
+      @values[key] ||= []
     end
 
     def self.create(method: "", uri_pattern: "")

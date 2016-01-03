@@ -26,9 +26,14 @@ module Log::Analyzer
           matche = router.serve(req)
           next unless matche.any?
 
+          req.env.delete_if { |key, val| ["REQUEST_METHOD", "PATH_INFO"].include?(key) }
           _, _, route =  matche.first
           endpoint = Endpoint.find_by(method: route.path.request_method, uri_pattern: route.path.uri_pattern)
           endpoint.count += 1
+
+          req.env.each do |key, val|
+            endpoint[key.downcase] << val.to_i
+          end
         end
       end
       Endpoint.all
