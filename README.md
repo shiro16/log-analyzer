@@ -40,6 +40,7 @@ Usage: log-analyzer [options] <file ...>
     -h, --help                       output usage information
     -V, --version                    output the version number
     -r FILE                          routing format file
+    -S, --log-separator VALUE        log separator
     -R, --route-regexp VALUE         route regexp
     -L, --log-regexp VALUE           log regexp
 ```
@@ -48,15 +49,15 @@ Example:
 
 ```shell
 $ log-analyzer -r path/to/routes.txt path/to/application.log
-┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━┓
-┃ method ┃ endpoint   ┃ count ┃
-┣━━━━━━━━╊━━━━━━━━━━━━╊━━━━━━━┫
-┃ GET    ┃ /          ┃ 10    ┃
-┃ GET    ┃ /users     ┃ 5     ┃
-┃ GET    ┃ /users/:id ┃ 3     ┃
-┃ POST   ┃ /users     ┃ 2     ┃
-┃ DELETE ┃ /users/:id ┃ 0     ┃
-┗━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━┛
+┏━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┓
+┃ method ┃ endpoint   ┃ count ┃ response_time(avg) ┃ response_time(max) ┃ response_time(min) ┃
+┣━━━━━━━━╊━━━━━━━━━━━━╊━━━━━━━╊━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━━━━━━━━━━━╊━━━━━━━━━━━━━━━━━━━━┫
+┃ GET    ┃ /          ┃ 10    ┃ 20.5               ┃ 55                 ┃ 3                  ┃
+┃ GET    ┃ /users     ┃ 5     ┃ 10.3               ┃ 30                 ┃ 3                  ┃
+┃ GET    ┃ /users/:id ┃ 3     ┃ 10                 ┃ 15                 ┃ 5                  ┃
+┃ POST   ┃ /users     ┃ 2     ┃ 30                 ┃ 40                 ┃ 20                 ┃
+┃ DELETE ┃ /users/:id ┃ 0     ┃                    ┃                    ┃                    ┃
+┗━━━━━━━━┻━━━━━━━━━━━━┻━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━┛
 ```
 
 ## Development
