@@ -19,6 +19,7 @@ op.on('-V', '--version', 'output the version number') do |v|
 end
 
 op.on('-r FILE', 'routing format file') { |v| opts[:routing_file] = v }
+op.on('-S VALUE', '--log-separator', 'log separator') { |v| opts[:log_separator] = v }
 op.on('-R VALUE', '--route-regexp', 'route regexp') { |v| opts[:route_regexp] = v }
 op.on('-L VALUE', '--log-regexp', 'log regexp') { |v| opts[:log_regexp] = v }
 
@@ -30,6 +31,7 @@ else
   Log::Analyzer.configure do |config|
     config.route_regexp = Regexp.new(opts[:route_regexp]) if opts[:route_regexp]
     config.log_regexp   = Regexp.new(opts[:log_regexp]) if opts[:log_regexp]
+    config.log_separator = opts[:log_separator] if opts[:log_separator]
   end
 
   Log::Analyzer::CLI.run(ARGV, opts)
