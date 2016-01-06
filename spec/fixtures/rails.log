@@ -1,8 +1,30 @@
 Started GET "/" for ::1 at 2015-12-28 22:30:34 +0900
+Completed 200 OK in 298ms (Views: 181.0ms | ActiveRecord: 29.9ms)
+
+
 Started GET "/users" for ::1 at 2015-12-28 22:30:42 +0900
+Completed 200 OK in 298ms (Views: 181.0ms | ActiveRecord: 29.9ms)
+
+
 Started GET "/" for ::1 at 2015-12-29 20:38:42 +0900
+Completed 200 OK in 298ms (Views: 181.0ms | ActiveRecord: 29.9ms)
+
+
 Started GET "/users" for ::1 at 2015-12-29 21:09:04 +0900
+Completed 200 OK in 298ms (Views: 181.0ms | ActiveRecord: 29.9ms)
+
+
 Started GET "/users/1" for ::1 at 2015-12-29 21:47:53 +0900
+Completed 200 OK in 298ms (Views: 181.0ms | ActiveRecord: 29.9ms)
+
+
 Started DELETE "/users/1" for ::1 at 2015-12-30 20:48:29 +0900
+Completed 200 OK in 298ms (Views: 181.0ms | ActiveRecord: 29.9ms)
+
+
 Started POST "/users" for ::1 at 2015-12-30 20:49:29 +0900
+Completed 200 OK in 298ms (Views: 181.0ms | ActiveRecord: 29.9ms)
+
+
 Started GET "/test" for ::1 at 2015-12-29 21:51:24 +0900
+Completed 200 OK in 298ms (Views: 181.0ms | ActiveRecord: 29.9ms)
