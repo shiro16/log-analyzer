@@ -36,7 +36,7 @@ describe Log::Analyzer::Analyze do
 
     subject { analyze.result }
 
-    it { expect(subject.count).to eq(7) }
+    it { expect(subject.count).to eq(8) }
   end
 
   describe '.sort' do
@@ -44,7 +44,7 @@ describe Log::Analyzer::Analyze do
 
     subject { analyze.sort }
 
-    it { expect(subject.count).to eq(7) }
+    it { expect(subject.count).to eq(8) }
     it { expect(subject).to eq(analyze.result.sort{ |a, b| b.count <=> a.count }) }
   end
 

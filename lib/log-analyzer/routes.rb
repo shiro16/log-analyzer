@@ -5,7 +5,7 @@ module Log::Analyzer
   class Routes < ActionDispatch::Journey::Routes
     def initialize(routes_text)
       super()
-      routes_text.scan(regexp) do |request_method, request_path|
+      routes_text.scan(regexp) do |request_method, request_path, requirements, constraints|
         path_pattern = Pattern.from_string(request_method, request_path)
         add_route(nil, path_pattern, {request_method: /^#{request_method}$/}, {}, {})
       end

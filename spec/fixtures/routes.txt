@@ -1,9 +1,11 @@
-                 Prefix Verb   URI Pattern                                                      Controller#Action
-                  users GET    /users(.:format)                                                 users#index
-                        POST   /users(.:format)                                                 users#create
-                   user GET    /users/:id(.:format)                                             users#show
-                        DELETE /users/:id(.:format)                                             users#destroy
-                        PATCH  /users/:id(.:format)                                             users#update
-                        PUT    /users/:id(.:format)                                             users#update
-                        GET    /
-home#index
+   Prefix Verb   URI Pattern               Controller#Action              Constraints
+    users GET    /users(.:format)          users#index
+          POST   /users(.:format)          users#create
+     user GET    /users/:id(.:format)      users#show
+          PATCH  /users/:id(.:format)      users#update
+          PUT    /users/:id(.:format)      users#update
+          DELETE /users/:id(.:format)      users#destroy
+          GET    /:id(.:format)            posts#show {:id=>/[A-Z]\d{5}/} []
+          GET    /                         iphone#index                   ["lambda { |request| request.user_agent =~ /iPhone/ }"]
+          GET    /                         android#index                  [AndroidConstraint]
+          GET    /                         pc#index

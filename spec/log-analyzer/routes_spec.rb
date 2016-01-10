@@ -6,6 +6,6 @@ describe Log::Analyzer::Routes do
 
     subject { Log::Analyzer::Routes.new(routes_text) }
 
-    it { expect(subject.routes.count).to eq(7) }
+    it { expect(subject.routes.count).to eq(10) }
   end
 end
