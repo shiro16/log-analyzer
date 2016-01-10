@@ -19,6 +19,12 @@ describe Log::Analyzer::Analyze do
       it { expect(subject.instance_variable_get(:@files)).to eq([fixtures_path_for("rails.log")]) }
     end
 
+    context 'when files is Wildcard String' do
+      let(:files) { fixtures_path_for("*.log") }
+
+      it { expect(subject.instance_variable_get(:@files)).to eq([fixtures_path_for("rails.log")]) }
+    end
+
     it do
       expect_any_instance_of(Log::Analyzer::Analyze).to receive(:create_endpoints)
       subject

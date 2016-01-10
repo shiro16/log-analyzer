@@ -1,7 +1,7 @@
 module Log::Analyzer
   class Analyze
     def initialize(files, routes_text)
-      @files =files.is_a?(Array) ? files : [files]
+      @files = Dir.glob(files).select { |f| File.file?(f) }
       @routes = Routes.new(routes_text)
       create_endpoints
     end
