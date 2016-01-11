@@ -23,14 +23,12 @@ module Log::Analyzer
       @files.each do |file|
         log = Log.new(file)
         log.each_line do |req|
-          matche = router.serve(req)
-          next unless matche.any?
+          route = router.serve(req)
+          next if route.nil?
 
-          req.env.delete_if { |key, val| ["REQUEST_METHOD", "PATH_INFO"].include?(key) }
-          _, _, route =  matche.first
+          req.env.delete_if { |key, val| ["REQUEST_METHOD", "PATH_INFO", "SCRIPT_NAME", "action_dispatch.request.path_parameters"].include?(key) }
           endpoint = Endpoint.find_by(method: route.path.request_method, uri_pattern: route.path.uri_pattern)
           endpoint.count += 1
-
           req.env.each do |key, val|
             endpoint[key.downcase] << val.to_i
           end

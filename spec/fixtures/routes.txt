@@ -7,5 +7,5 @@
           DELETE /users/:id(.:format)      users#destroy
           GET    /:id(.:format)            posts#show {:id=>/[A-Z]\d{5}/} []
           GET    /                         iphone#index                   ["lambda { |request| request.user_agent =~ /iPhone/ }"]
-          GET    /                         android#index                  [SpecConstraint]
+          GET    /                         android#index                  [SpecConstraint.new]
           GET    /                         pc#index

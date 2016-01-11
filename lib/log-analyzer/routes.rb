@@ -13,7 +13,7 @@ module Log::Analyzer
                       end.map do |constraint|
                         constraint.is_a?(String) ? eval(constraint) : constraint
                       end
-        app = ActionDispatch::Routing::Mapper::Constraints.new(constraints, {}, false)
+        app = ActionDispatch::Routing::Mapper::Constraints.new(nil, constraints, true)
 
         path_pattern = Pattern.from_string(request_method, request_path, requirements)
         add_route(app, path_pattern, {request_method: /^#{request_method}$/}, {}, {})
