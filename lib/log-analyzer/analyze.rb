@@ -30,7 +30,7 @@ module Log::Analyzer
           endpoint = Endpoint.find_by(method: route.path.request_method, uri_pattern: route.path.uri_pattern)
           endpoint.count += 1
           req.env.each do |key, val|
-            endpoint[key.downcase] << val.to_i
+            endpoint[key.downcase].store(val.to_i)
           end
         end
       end
