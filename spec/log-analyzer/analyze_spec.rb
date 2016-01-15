@@ -4,7 +4,7 @@ describe Log::Analyzer::Analyze do
   let(:files) { fixtures_path_for("rails.log") }
   let(:routes_text) { File.read(fixtures_path_for("routes.txt")) }
 
-  describe '.initialize' do
+  describe '#initialize' do
     subject { Log::Analyzer::Analyze.new(files, routes_text) }
 
     context 'when files is String' do

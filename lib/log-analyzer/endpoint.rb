@@ -34,16 +34,14 @@ module Log::Analyzer
 
       def initialize
         @total = 0
-        @min   = 0
-        @max   = 0
       end
 
       def min=(value)
-        @min = value if @min > value
+        @min = value if @min.nil? || @min > value
       end
 
       def max=(value)
-        @max = value if @max < value
+        @max = value if @max.nil? || @max < value
       end
 
       def store(value)

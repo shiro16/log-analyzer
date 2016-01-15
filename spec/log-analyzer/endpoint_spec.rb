@@ -49,4 +49,43 @@ describe Log::Analyzer::Endpoint do
 
     it { expect(subject.has_key?("#{method}:#{uri_pattern}") ).to be_truthy }
   end
+
+  describe Log::Analyzer::Endpoint::Value do
+    let(:value) { Log::Analyzer::Endpoint::Value.new }
+
+    describe '#initialize' do
+      it { expect(value.total).to eq(0) }
+      it { expect(value.min).to eq(nil) }
+      it { expect(value.max).to eq(nil) }
+    end
+
+    describe '#min=' do
+      before do
+        value.min = 1
+        value.min = 2
+      end
+
+      it { expect(value.min).to eq(1) }
+    end
+
+    describe '#max=' do
+      before do
+        value.max = 1
+        value.max = 2
+      end
+
+      it { expect(value.max).to eq(2) }
+    end
+
+    describe '#store' do
+      before do
+        value.store(-1)
+        value.store(2)
+      end
+
+      it { expect(value.min).to eq(-1) }
+      it { expect(value.max).to eq(2) }
+      it { expect(value.total).to eq(1) }
+    end
+  end
 end
