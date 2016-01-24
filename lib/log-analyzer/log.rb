@@ -21,7 +21,7 @@ module Log::Analyzer
     end
 
     def separator
-      ::Log::Analyzer.config.log_separator
+      ::Log::Analyzer.config.log_separator.gsub("\\n", "\n")
     end
   end
 end
