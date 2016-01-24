@@ -33,7 +33,7 @@ module Log::Analyzer
               column(endpoint.uri_pattern)
               column(endpoint.count)
               endpoint.values.each do |_, val|
-                column(val.total.quo(endpoint.count).round(2))
+                column(val.total.quo(endpoint.count).to_f.round(2))
                 column(val.max)
                 column(val.min)
               end
