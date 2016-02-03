@@ -6,7 +6,7 @@ module Log::Analyzer
 
     def each_line(&block)
       @file.each_line(separator) do |line|
-        next unless md = line.match(regexp)
+        next unless md = line.scrub('').match(regexp)
         env = md.names.inject({}) do |hash, name|
                 hash[name.upcase] = md[name]
                 hash
