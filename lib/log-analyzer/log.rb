@@ -7,7 +7,7 @@ module Log::Analyzer
     def each_line(&block)
       @file.each_line(separator) do |line|
         next unless md = line.scrub('').match(regexp)
-        env = md.names.inject({}) do |hash, name|
+        env = md.names.inject({'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'}) do |hash, name|
                 hash[name.upcase] = md[name]
                 hash
               end
